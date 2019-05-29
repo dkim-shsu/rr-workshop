@@ -8,9 +8,7 @@ output:
 ---
 
 
-```{r global_options, echo = FALSE}
-knitr::opts_chunk$set(echo = FALSE, fig.path = "figs/") #If you want to save figures in a separate place
-```
+
 
 
 *This is some formatting*
@@ -25,59 +23,38 @@ knitr::opts_chunk$set(echo = FALSE, fig.path = "figs/") #If you want to save fig
 1. A numbered list
 1. A second numbered item.
 
-```{r load_data}
-library("gapminder")
-library("ggplot2")
-suppressPackageStartupMessages(library("tidyverse"))
-data(gapminder)
-head(gapminder)
+
+```
+## # A tibble: 6 x 6
+##   country     continent  year lifeExp      pop gdpPercap
+##   <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
+## 1 Afghanistan Asia       1952    28.8  8425333      779.
+## 2 Afghanistan Asia       1957    30.3  9240934      821.
+## 3 Afghanistan Asia       1962    32.0 10267083      853.
+## 4 Afghanistan Asia       1967    34.0 11537966      836.
+## 5 Afghanistan Asia       1972    36.1 13079460      740.
+## 6 Afghanistan Asia       1977    38.4 14880372      786.
 ```
 
-```{r load_data2, results = "hide"}
-library("gapminder")
-library("ggplot2")
-data(gapminder)
-head(gapminder)
-```
 
-```{r gdp_lifeexp_plot}
-ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
-  geom_point()
-```
 
-```{r year_lifeexp_plot, echo = FALSE}
-ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp)) +
-  geom_point()
-```
+![](figs/gdp_lifeexp_plot-1.png)<!-- -->
 
-```{r year_lifeexp_plot1, eval = FALSE}
-ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp)) +
-  geom_point()
-```
+![](figs/year_lifeexp_plot-1.png)<!-- -->
 
-```{r year_lifeexp_plot2, results = "hide"}
-ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp)) +
-  geom_point()
-```
 
-```{r year_lifeexp_plot3, fig.width = 3, fig.height = 3}
-ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp)) +
-  geom_point()
-```
 
-```{r year_lifeexp_plot4, fig.width = 3}
-ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp)) +
-  geom_point()
-```
+![](figs/year_lifeexp_plot2-1.png)<!-- -->
 
-The largest population of any country in this dataset is `r max(gapminder$pop)`.
+![](figs/year_lifeexp_plot3-1.png)<!-- -->
 
-```{r iceland, echo =  FALSE}
-iceland <- filter(gapminder, country == "Iceland") 
-max_iceland_lifeexp <- max(iceland$lifeExp)
-```
+![](figs/year_lifeexp_plot4-1.png)<!-- -->
 
-The maximum life expectancy in Iceland is `r max_iceland_lifeexp`.
+The largest population of any country in this dataset is 1318683096.
+
+
+
+The maximum life expectancy in Iceland is 81.757.
 
 ```
 (base) L145458:rr-workshop shsu$
@@ -137,9 +114,7 @@ Here is some more text that I am adding.
 
 
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
 
 ## R Markdown
 
@@ -147,16 +122,25 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-```{r cars}
+
+```r
 summary(cars)
+```
+
+```
+##      speed           dist       
+##  Min.   : 4.0   Min.   :  2.00  
+##  1st Qu.:12.0   1st Qu.: 26.00  
+##  Median :15.0   Median : 36.00  
+##  Mean   :15.4   Mean   : 42.98  
+##  3rd Qu.:19.0   3rd Qu.: 56.00  
+##  Max.   :25.0   Max.   :120.00
 ```
 
 ## Including Plots
 
 You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
+![](figs/pressure-1.png)<!-- -->
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
