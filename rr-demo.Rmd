@@ -1,0 +1,144 @@
+---
+title: "My Report"
+author: "Doo Young Kim"
+date: "5/29/2019"
+output: html_document
+---
+
+
+```{r global_options, echo = FALSE}
+knitr::opts_chunk$set(echo = FALSE, fig.path = "figs/") #If you want to save figures in a separate place
+```
+
+
+*This is some formatting*
+
+**Some other formatting**
+
+[A hyperlink](https://google.com)
+
+- A bulleted list
+- Another list item
+
+1. A numbered list
+1. A second numbered item.
+
+```{r load_data}
+library("gapminder")
+library("ggplot2")
+suppressPackageStartupMessages(library("tidyverse"))
+data(gapminder)
+head(gapminder)
+```
+
+```{r load_data2, results = "hide"}
+library("gapminder")
+library("ggplot2")
+data(gapminder)
+head(gapminder)
+```
+
+```{r gdp_lifeexp_plot}
+ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
+  geom_point()
+```
+
+```{r year_lifeexp_plot, echo = FALSE}
+ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp)) +
+  geom_point()
+```
+
+```{r year_lifeexp_plot1, eval = FALSE}
+ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp)) +
+  geom_point()
+```
+
+```{r year_lifeexp_plot2, results = "hide"}
+ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp)) +
+  geom_point()
+```
+
+```{r year_lifeexp_plot3, fig.width = 3, fig.height = 3}
+ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp)) +
+  geom_point()
+```
+
+```{r year_lifeexp_plot4, fig.width = 3}
+ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp)) +
+  geom_point()
+```
+
+The largest population of any country in this dataset is `r max(gapminder$pop)`.
+
+```{r iceland, echo =  FALSE}
+iceland <- filter(gapminder, country == "Iceland") 
+max_iceland_lifeexp <- max(iceland$lifeExp)
+```
+
+The maximum life expectancy in Iceland is `r max_iceland_lifeexp`.
+
+```
+(base) L145458:rr-workshop shsu$
+(base) L145458:rr-workshop shsu$ git config --list
+credential.helper=osxkeychain
+(base) L145458:rr-workshop shsu$ git config --global user.name "Doo Young Kim"(base) L145458:rr-workshop shsu$ git config --global user.email "dkim@shsu.edu"
+(base) L145458:rr-workshop shsu$ git config --global core.editor "nano"
+(base) L145458:rr-workshop shsu$ git config --list
+credential.helper=osxkeychain
+user.name=Doo Young Kim
+user.email=dkim@shsu.edu
+core.editor=nano
+(base) L145458:rr-workshop shsu$ git init
+Initialized empty Git repository in /Users/shsu/Desktop/rr-workshop/.git/
+(base) L145458:rr-workshop shsu$
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
